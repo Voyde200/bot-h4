@@ -3,6 +3,15 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { token } = require("./config.json");
+const Sequelize = require("sequelize");
+
+const sequelize = new Sequelize("database", "user", "password", {
+  host: "localhost",
+  dialect: "sqlite", 
+  logging: false,
+  // SQLite only
+  storage: "database.sqlite"
+});
 
 // Create a new client to run the bot
 const client = new Client({
