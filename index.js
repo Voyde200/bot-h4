@@ -4,6 +4,7 @@ const path = require("node:path");
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { token } = require("./config.json");
 
+
 // Create a new client to run the bot
 const client = new Client({
   intents: [
