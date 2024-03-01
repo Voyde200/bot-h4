@@ -5,6 +5,7 @@ const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const { token } = require("./config.json");
 const Sequelize = require("sequelize");
 
+//Créer une base de donées
 const sequelize = new Sequelize("database", "user", "password", {
   host: "localhost",
   dialect: "sqlite", 
@@ -12,6 +13,21 @@ const sequelize = new Sequelize("database", "user", "password", {
   // SQLite only
   storage: "database.sqlite"
 });
+
+const Tags = sequelize.define("tags", {
+  name: {
+    type: Sequelize.STRING,
+    unique: true
+  },
+  description: Sequelize.TEXT,
+  username: Sequelize.STRING,
+  usage_count: {
+    type: Sequelize.INTEGER,
+    defualtValue: 0,
+    allowsNull: false 
+  },
+});
+
 
 // Create a new client to run the bot
 const client = new Client({
